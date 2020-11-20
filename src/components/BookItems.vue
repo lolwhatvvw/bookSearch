@@ -1,15 +1,18 @@
 <template>
     <div class = "card">
-        <img class="cover" v-if="book.volumeInfo.imageLinks" :src="book.volumeInfo.imageLinks.thumbnail"/>
-        <div class = "info">
-            <div class="title">
-            <p>{{book.volumeInfo.title}}</p>
+        <div class="cover">
+            <img v-if="book.volumeInfo.imageLinks" :src="book.volumeInfo.imageLinks.thumbnail"/>
         </div>
-        <div class="author" v-for="author in book.volumeInfo.authors" :key="author.id" >
-            {{author}}
+        <a :href="book.volumeInfo.infoLink" class="bigLink">Посмотреть</a>
+        <router-link tag="a" class="link" :to="{name: 'book', params: {book: book}}">Описание</router-link>
+        <div class = "description">
+            <p class="title">{{book.volumeInfo.title}}</p>
+            <hr class="line">
+        <div class="author" v-for="author in book.volumeInfo.authors.slice(0,1)" :key="author.id" >
+            {{author}}</div>
         </div>
-        <router-link tag="button" class="button" :to="{name: 'book', params: {book: book}}">Посмотреть</router-link>
-        </div>
+        
+        
     </div>
 </template>
 
@@ -25,20 +28,65 @@ export default {
 }
 </script>
 <style scoped>
-    .card{
-        display: flex;
-        flex-direction: column;
-        margin-top: 20px;
-        margin-right: 20px;
-        border: 1px solid black;
-        max-height: 400px;
-        width: 25%;
-    }
-    .cover{
-        margin-top: 10px;
-        align-self: center;
-        width: 150px;
-        height: 200px;
-    }
+.card {
+    font-family: "Abril Fatface", serif;
+    background: rgb(235, 235, 235);
+    width: 330px;
+    height: 390px;
+    box-shadow: 0 0 20px #aaa;
+    margin: 25px;
+    padding: 10px 10px 0 10px;
+    transition: height 1s;
+}
+
+
+.cover {
+    border: 2px solid gray;
+    height: 60%;
+    overflow: hidden;
+}
+.description{
+    margin-top: 5px;
+    height: 30%;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: auto;
+}
+.bigLink{
+    font-size: 13px;
+    margin-right: 5px;
+    color: rgb(100, 100, 100);
     
+    text-decoration: none;
+}
+.bigLink:visited{
+    color: rgb(100, 100, 100);
+}
+.link{
+    font-size: 13px;
+    padding-left: 5px;
+    border-left: 1px solid black;
+    color: rgb(100, 100, 100);
+    
+    text-decoration: none;
+}
+.link:visited{
+    color: rgb(100, 100, 100);
+}
+.cover img {
+    width: 100%;
+}
+.line{
+    border: none;
+    height: 1px;
+    width: 30%;
+    background-color: rgb(194, 194, 194);
+}
+.title{
+    font-size: 18px;
+}
+.author{
+    margin-top: 10px;
+    font-size: 15px;
+}
 </style>

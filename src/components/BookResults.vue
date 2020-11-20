@@ -34,13 +34,6 @@ export default {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        margin-top: 50px;
         padding: 50px;
-    }
-    .select{
-        background: #F9F0DA;
-    }
-    .hidden{
-        visibility: hidden;
     }
 </style>
