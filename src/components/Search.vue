@@ -6,9 +6,10 @@
             <i class="fa fa-search"></i>
             </span>
             <input id="search" @keyup.enter = "$emit('search-book', searchValue)"
-                type="search" 
+                type="text" 
                 v-model="searchValue"
-                placeholder="Поиск по сайту"> 
+                placeholder="Поиск по сайту"
+                autocomplete="off"> 
         </form>
         <select class="select" v-model="sortKey" @click.prevent="onSort" @click = "$emit('sort-key', sortKey)">
             <option>Дата</option>
@@ -75,7 +76,6 @@ body{
     background: rgb(236, 236, 236);
     border: none;
     font-size: 10pt;
-    
     color: #63717f;
     padding-left: 45px;
     -webkit-border-radius: 5px;
@@ -94,9 +94,13 @@ body{
 .header input#search:-ms-input-placeholder {  
     color: #65737e;  
 }
+header input#search::-ms-clear{
+    width: 0;
+    height: 0;
+}
 .icon{
     position: absolute;
-    
+
     margin-left: 17px;
     margin-top: 17px;
     z-index: 1;
@@ -115,12 +119,15 @@ body{
     border: 0;
     border-radius: 5px;
     height: 20px;
-    background: url("../assets/sort.svg") no-repeat right rgb(236, 236, 236);
+    background: url("../assets/sort-solid.svg") no-repeat right rgb(236, 236, 236);
     appearance: none;
-    color: #2b303b;
+    color: #63717f;
     background-size: 10px;
     background-position-x: 86px;
-    background-position-y: -1px;
+    background-position-y: 2px;
+    text-align-last: center;
+    padding-right: 8px;
+    font-size: 80%;
 }
 
 </style>

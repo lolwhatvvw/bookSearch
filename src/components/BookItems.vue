@@ -56,7 +56,6 @@ export default {
     font-size: 13px;
     margin-right: 5px;
     color: rgb(100, 100, 100);
-    
     text-decoration: none;
 }
 .bigLink:visited{
