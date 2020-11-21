@@ -3,28 +3,31 @@
     <div class="top"></div>
     <div class="all">
         <div class="menu">
-        <div class="link" @click="$router.push('/')">Main</div>
-        <img class="blockator" src="@/assets/arrow.svg">
-        <div>{{book.volumeInfo.title}}</div>
+            <div class="link" @click="$router.push('/')">Главная</div>
+            <img class="blockator" src="@/assets/arrow.svg">
+            <div>{{book.volumeInfo.title}}</div>
         </div>
-    <div class="top-content">
-        <img class="cover" v-if="book.volumeInfo.imageLinks" :src="book.volumeInfo.imageLinks.thumbnail"/>
-        <div class="main-info">
-        <h1 class="title">{{book.volumeInfo.title}}</h1>
-        <h2 class="author" v-for="author in book.volumeInfo.authors" :key="author.id" >
-            {{author}}
-        </h2>
-        <div class="category" v-for="category in book.volumeInfo.categories" :key="category" >
-            Жанр: {{category}}</div>
-            <div class="date">Год: {{book.volumeInfo.publishedDate}}</div>
-            <div class="pages">Число страниц: {{book.volumeInfo.pageCount}}</div>
-            <div>Язык: {{book.volumeInfo.language}}</div>
+        <div class="top-content">
+            <img class="cover" v-if="book.volumeInfo.imageLinks" :src="book.volumeInfo.imageLinks.thumbnail"/>
+            <img class="cover" v-else src="/src/assets/books.png">
+            <div class="main-info">
+                <h1 class="title">{{book.volumeInfo.title}}</h1>
+                <h2 class="author" v-for="author in book.volumeInfo.authors" :key="author.id" >
+                    {{author}}
+                </h2>
+                <div class="category" v-for="category in book.volumeInfo.categories" :key="category" >
+                    Жанр: {{category}}</div>
+                <div class="date">Год: {{book.volumeInfo.publishedDate}}</div>
+                <div class="lng">Язык: {{book.volumeInfo.language}}</div>
+                <div class="links">
+                    <a :href="book.volumeInfo.infoLink" class="readLink" target="_blank">Читать</a>
+                    <a v-if="book.accessInfo.acsTokenLink" :href="book.accessInfo.acsTokenLink" class="Скачать">Скачать</a>
+                </div>
+            </div>
         </div>
-        </div>
-        <div class="description">{{book.volumeInfo.description}}</div>
-        
+    <div v-if="book.volumeInfo.description" class="description">{{book.volumeInfo.description}}</div>
+    <!-- <div v-else class="description">Описание отсутсвует</div> -->
     </div>
-    <div class="bottom"></div>
 </body>
 </template>
 
@@ -38,11 +41,13 @@ export default {
 <style scoped>
 body{
     background:rgb(235, 235, 235);
+    height: 100vh;
 }
 .top{
     background: rgb(235, 235, 235);
     height: 50px;
 }
+
     .link{
         padding-right: 5px;
         cursor: pointer;
@@ -55,7 +60,6 @@ body{
     }
     .menu{
         height: 20px;
-        margin-top: 50px;
         text-align-last: left;
         padding: 20px;
         padding-bottom: 0px;
@@ -64,9 +68,7 @@ body{
         font: 15px/19px RbtRegular;
     }
     .all {
-        
         box-shadow: 0 0 20px #aaa;
-        
         background: white;
         margin-left: 150px;
         margin-right: 150px;
@@ -117,15 +119,18 @@ body{
     .date{
         margin-bottom: 7px;
     }
-    .pages{
-        margin-bottom: 7px;
+    .lng{
+        margin-bottom: 23px;
+    }
+    .readLink{
+    display: inline-block;
+    background: #717b87;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    border-radius: 3px;
     }
     .description{
         padding: 20px;
     }
-    .bottom{
-    background: rgb(235, 235, 235);
-    flex-grow: 1;
-    height: 165px;
-}
 </style>

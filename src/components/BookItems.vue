@@ -2,8 +2,9 @@
     <div class = "card">
         <div class="cover">
             <img v-if="book.volumeInfo.imageLinks" :src="book.volumeInfo.imageLinks.thumbnail"/>
+            <img v-else src="/src/assets/books.png">
         </div>
-        <a :href="book.volumeInfo.infoLink" class="bigLink">Посмотреть</a>
+        <a :href="book.volumeInfo.infoLink" class="bigLink">Читать</a>
         <router-link tag="a" class="link" :to="{name: 'book', params: {book: book}}">Описание</router-link>
         <div class = "description">
             <p class="title">{{book.volumeInfo.title}}</p>
@@ -29,6 +30,7 @@ export default {
 </script>
 <style scoped>
 .card {
+
     font-family: "Abril Fatface", serif;
     background: rgb(235, 235, 235);
     width: 330px;
