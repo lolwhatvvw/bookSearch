@@ -2,14 +2,14 @@
 <body>
 <div class="bigSearch">
         <form class=header @submit.prevent="onSubmit">
-            <span class = "icon" @click = "$emit('search-book', searchValue)"> 
+            <span class = "icon" @click = "$emit('search-book', searchValue)">
             <i class="fa fa-search"></i>
             </span>
             <input id="search" @keyup.enter = "$emit('search-book', searchValue)"
-                type="text" 
+                type="text"
                 v-model="searchValue"
                 placeholder="Поиск по сайту"
-                autocomplete="off"> 
+                autocomplete="off">
         </form>
         <select class="select" v-model="sortKey" @click.prevent="onSort" @click = "$emit('sort-key', sortKey)">
             <option>Дата</option>
@@ -54,7 +54,7 @@ body{
     background: #717b87;
     display: flex;
     justify-content: center;
-} 
+}
 .bigSearch{
     width: 300px;
     height: 150px;
@@ -86,13 +86,13 @@ body{
     color: #65737e;
 }
 .header input#search:-moz-placeholder {
-    color: #65737e;  
+    color: #65737e;
 }
-.header input#search::-moz-placeholder { 
-    color: #65737e;  
+.header input#search::-moz-placeholder {
+    color: #65737e;
 }
-.header input#search:-ms-input-placeholder {  
-    color: #65737e;  
+.header input#search:-ms-input-placeholder {
+    color: #65737e;
 }
 header input#search::-ms-clear{
     width: 0;
@@ -109,7 +109,7 @@ header input#search::-ms-clear{
 .header input#search:hover, .header input#search:focus, .header input#search:active{
     outline:none;
     background:  rgb(206, 206, 206);
-} 
+}
 .select{
     width: 100px;
     outline: none;

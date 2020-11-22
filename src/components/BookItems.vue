@@ -9,11 +9,9 @@
         <div class = "description">
             <p class="title">{{book.volumeInfo.title}}</p>
             <hr class="line">
-        <div class="author" v-for="author in book.volumeInfo.authors.slice(0,1)" :key="author.id" >
+        <div class="author" v-for="author in book.volumeInfo.authors" :key="author.id" >
             {{author}}</div>
         </div>
-        
-        
     </div>
 </template>
 
@@ -30,7 +28,6 @@ export default {
 </script>
 <style scoped>
 .card {
-
     font-family: "Abril Fatface", serif;
     background: rgb(235, 235, 235);
     width: 330px;
@@ -68,7 +65,6 @@ export default {
     padding-left: 5px;
     border-left: 1px solid black;
     color: rgb(100, 100, 100);
-    
     text-decoration: none;
 }
 .link:visited{

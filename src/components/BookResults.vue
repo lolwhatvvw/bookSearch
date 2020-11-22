@@ -1,6 +1,5 @@
 <template>
 <form>
-
 <div class="book-results">
     <div v-if="books.length>0" class="DisplayBooks">
         <BookItems
