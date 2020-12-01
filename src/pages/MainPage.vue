@@ -1,5 +1,5 @@
 <template>
-
+    <body>
     <div id="mainPage">
     <Search
         @search-book="searchBook"
@@ -7,6 +7,7 @@
     />
     <book-results :books="books"></book-results>
     </div>
+    </body>
 </template>
 
 <script>
@@ -78,12 +79,10 @@ mounted(){
 </script>
 
 <style>
-#mainPage {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-}
+    #mainPage{
+        background: rgb(236, 236, 236);
+    }
+    body {
+    margin: 0;
+    }
 </style>

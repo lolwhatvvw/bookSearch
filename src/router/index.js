@@ -9,7 +9,6 @@ export default new VueRouter({
             name: 'main',
             component: MainPage,
             props: true,
-            
         },
         {
             path: '/book',

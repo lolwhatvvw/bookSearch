@@ -1,8 +1,7 @@
 <template>
 <form>
-
 <div class="book-results">
-    <div class="DisplayBooks">
+    <div v-if="books.length>0" class="DisplayBooks">
         <BookItems
         v-for="book in books" :key="book.id"
         v-bind:book="book"
@@ -21,7 +20,6 @@ export default {
     },
     beforeDestroy() {
         sessionStorage.setItem("books", JSON.stringify(this.books))
-        console.log(this.sKey)
     },
 }
 </script>
@@ -34,13 +32,7 @@ export default {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        margin-top: 50px;
-        padding: 50px;
-    }
-    .select{
-        background: #F9F0DA;
-    }
-    .hidden{
-        visibility: hidden;
+        padding-top: 50px;
+        padding-bottom: 104px;
     }
 </style>
